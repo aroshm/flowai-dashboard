@@ -20,7 +20,7 @@ const LineChartCustom = () => {
     <div className="bg-white p-6 rounded-xl shadow-sm h-75">
       <h3 className="font-semibold mb-4">User Growth</h3>
 
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height="90%">
         <LineChart data={data}>
           <XAxis dataKey="label" />
           <YAxis />
