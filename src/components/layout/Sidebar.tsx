@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import Logo from "../../assets/flow-ai-logo.png";
 import CollapseLogo from "../../assets/flow-ai-logo-collapsed.png";
 import DarkLogo from "../../assets/flow-ai-logo-dark.png";
-import { MdMenu, MdDashboard, MdPeople, MdSettings } from "react-icons/md";
+import { MdMenu, MdDashboard, MdPeople } from "react-icons/md";
 
 type SidebarProps = {
   collapsed: boolean;
@@ -42,13 +42,6 @@ const Sidebar = ({ collapsed, setCollapsed, darkMode }: SidebarProps) => {
         >
           <MdPeople className="h-5 w-5" />
           {!collapsed && <span>Users</span>}
-        </NavLink>
-        <NavLink
-          to="/settings"
-          className="flex gap-1.5 items-center p-1.5 rounded text-indigo-600 hover:bg-indigo-100 transition [&.active]:bg-indigo-100 dark:text-indigo-100 dark:[&.active]:bg-gray-900 dark:hover:bg-gray-900"
-        >
-          <MdSettings className="h-5 w-5" />
-          {!collapsed && <span>Settings</span>}
         </NavLink>
       </nav>
     </div>

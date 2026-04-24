@@ -3,7 +3,6 @@ import "./App.css";
 import Layout from "./components/layout/Layout";
 import Dashboard from "./pages/Dashboard";
 import Users from "./pages/Users";
-import Settings from "./pages/Settings";
 
 function App() {
   return (
@@ -12,7 +11,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/users" element={<Users />} />
-          <Route path="/settings" element={<Settings />} />
         </Routes>
       </Layout>
     </BrowserRouter>

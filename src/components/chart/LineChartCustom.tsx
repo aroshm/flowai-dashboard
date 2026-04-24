@@ -5,6 +5,7 @@ import {
   YAxis,
   Tooltip,
   ResponsiveContainer,
+  CartesianGrid,
 } from "recharts";
 
 const data = [
@@ -25,7 +26,13 @@ const LineChartCustom = () => {
           <XAxis dataKey="label" />
           <YAxis />
           <Tooltip />
-          <Line type="monotone" dataKey="users" stroke="#6366f1"></Line>
+          <CartesianGrid strokeDasharray="3 3" />
+          <Line
+            type="monotone"
+            dataKey="users"
+            stroke="#6366f1"
+            strokeWidth={3}
+          ></Line>
         </LineChart>
       </ResponsiveContainer>
     </div>
