@@ -1,4 +1,5 @@
 import LineChartCustom from "../components/chart/LineChartCustom";
+import UserTable from "../components/table/UserTable";
 import KpiCard from "../components/ui/KpiCard";
 
 const Dashboard = () => {
@@ -21,6 +22,10 @@ const Dashboard = () => {
             <li>Server updated</li>
           </ul>
         </div>
+      </div>
+
+      <div className="py-5">
+        <UserTable itemsPerPage={8} showPaginations={true} />
       </div>
     </div>
   );
