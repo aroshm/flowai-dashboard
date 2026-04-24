@@ -42,6 +42,7 @@ const UserTable = ({ itemsPerPage, showPaginations }: UserTableProps) => {
   );
 
   const displayUsers = showPaginations ? paginatedValues : filteredValue;
+  const totalPages = Math.ceil(filteredValue.length / itemsPerPage);
 
   const getStatus = (id: number) => {
     return id % 2 === 0 ? "Active" : "Inactive";
@@ -52,14 +53,14 @@ const UserTable = ({ itemsPerPage, showPaginations }: UserTableProps) => {
       <input
         type="text"
         placeholder="Search users..."
-        className="border px-4 py-2 rounded-lg w-full max-w-sm"
+        className="border px-4 py-2 rounded-lg w-full max-w-sm dark:border-gray-500 dark:text-gray-100"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
 
       <div className="bg-white rounded-xl shadow-sm overflow-hidden">
-        <table className="w-full text-left">
-          <thead className="bg-gray-100 text-sm text-gray-600">
+        <table className="w-full text-left dark:border dark:border-gray-500">
+          <thead className="bg-gray-100 text-sm text-gray-600 dark:bg-slate-900 dark:text-gray-400">
             <tr>
               <th className="p-4">User</th>
               <th>Email</th>
@@ -69,21 +70,25 @@ const UserTable = ({ itemsPerPage, showPaginations }: UserTableProps) => {
           </thead>
           <tbody>
             {loading ? (
-              <tr>
-                <td className="p-6">Loading users...</td>
+              <tr className="dark:bg-slate-800">
+                <td className="p-6 ">Loading users...</td>
               </tr>
             ) : (
               displayUsers.map((user) => (
                 <tr
-                  className="border-t hover:bg-gray-50 transition"
+                  className="border-t hover:bg-gray-50 transition dark:border-t-gray-500 dark:bg-slate-800 dark:hover:bg-slate-700"
                   key={user.id}
                 >
-                  <td className="p-4 flex items-center gap-3 font-medium">
+                  <td className="p-4 flex items-center gap-3 font-medium dark:text-gray-300">
                     <img src={user.image} className="w-10 h-10 rounded-full" />
                     {user.firstName} {user.lastName}
                   </td>
-                  <td className="text-gray-600">{user.email}</td>
-                  <td className="text-gray-500">{user.age}</td>
+                  <td className="text-gray-600 dark:text-gray-400">
+                    {user.email}
+                  </td>
+                  <td className="text-gray-500 dark:text-gray-400">
+                    {user.age}
+                  </td>
                   <td>
                     <span
                       className={`px-2 py-1 text-xs rounded-full ${
@@ -106,14 +111,16 @@ const UserTable = ({ itemsPerPage, showPaginations }: UserTableProps) => {
         <div className="flex gap-2 mt-4">
           <button
             onClick={() => setPage((p) => Math.max(p - 1, 1))}
-            className="px-3 py-1 border rounded"
+            className="px-3 py-1 border rounded dark:border-gray-500 dark:text-gray-100 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={page === 1}
           >
             Prev
           </button>
 
           <button
             onClick={() => setPage((p) => p + 1)}
-            className="px-3 py-1 border rounded"
+            className="px-3 py-1 border rounded dark:border-gray-500 dark:text-gray-100 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={page === totalPages}
           >
             Next
           </button>

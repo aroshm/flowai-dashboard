@@ -14,9 +14,9 @@ const Dashboard = () => {
       <div className="grid md:grid-cols-2 gap-6">
         <LineChartCustom />
 
-        <div className="bg-white p-6 rounded-xl shadow-sm">
-          <h3 className="font-semibold">Recent Activity</h3>
-          <ul className="mt-4 space-y-2 text-sm text-gray-500">
+        <div className="bg-white p-6 rounded-xl shadow-sm dark:bg-slate-800">
+          <h3 className="font-semibold dark:text-gray-200">Recent Activity</h3>
+          <ul className="mt-4 space-y-2 text-sm text-gray-500 dark:text-white">
             <li>User John signed up</li>
             <li>New payment received</li>
             <li>Server updated</li>

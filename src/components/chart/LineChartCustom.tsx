@@ -18,8 +18,8 @@ const data = [
 
 const LineChartCustom = () => {
   return (
-    <div className="bg-white p-6 rounded-xl shadow-sm h-75">
-      <h3 className="font-semibold mb-4">User Growth</h3>
+    <div className="bg-white p-6 rounded-xl shadow-sm h-75 dark:bg-slate-800">
+      <h3 className="font-semibold mb-4 dark:text-gray-200">User Growth</h3>
 
       <ResponsiveContainer width="100%" height="90%">
         <LineChart data={data}>
