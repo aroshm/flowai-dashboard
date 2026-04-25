@@ -1,8 +1,15 @@
+import GenderChart from "../components/chart/GenderChart";
 import LineChartCustom from "../components/chart/LineChartCustom";
+import useHeader from "../components/table/useHeader";
 import UserTable from "../components/table/UserTable";
 import KpiCard from "../components/ui/KpiCard";
 
-const Dashboard = () => {
+type DashboardProps = {
+  header?: string;
+};
+
+const Dashboard = ({ header = "Dashboard" }: DashboardProps) => {
+  useHeader(header);
   return (
     <div className="space-y-6">
       <div className="grid md:grid-cols-3 gap-6">
@@ -16,11 +23,7 @@ const Dashboard = () => {
 
         <div className="bg-white p-6 rounded-xl shadow-sm dark:bg-slate-800">
           <h3 className="font-semibold dark:text-gray-200">Recent Activity</h3>
-          <ul className="mt-4 space-y-2 text-sm text-gray-500 dark:text-white">
-            <li>User John signed up</li>
-            <li>New payment received</li>
-            <li>Server updated</li>
-          </ul>
+          <GenderChart/>
         </div>
       </div>
 

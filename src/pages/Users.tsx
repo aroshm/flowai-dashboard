@@ -1,7 +1,13 @@
+import useHeader from "../components/table/useHeader";
 import UserTable from "../components/table/UserTable";
 
-const Users = () => {
-  return <UserTable itemsPerPage={12} showPaginations={false}/>;
+type UserProps = {
+  header?: string;
+};
+
+const Users = ({ header = "Users" }: UserProps) => {
+  useHeader(header);
+  return <UserTable itemsPerPage={12} showPaginations={false} />;
 };
 
 export default Users;

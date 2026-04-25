@@ -23,7 +23,7 @@ const Sidebar = ({ collapsed, setCollapsed, darkMode }: SidebarProps) => {
       </div>
 
       <img
-        src={darkMode ? DarkLogo : collapsed ? CollapseLogo : Logo}
+        src={darkMode && collapsed ? CollapseLogo : darkMode ? DarkLogo : collapsed ? CollapseLogo : Logo}
         alt="Flow AI logo"
         width="150px"
       />
