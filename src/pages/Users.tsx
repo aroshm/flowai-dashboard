@@ -1,4 +1,4 @@
-import useHeader from "../components/table/useHeader";
+import usePageTitle from "../hooks/usePageTitle";
 import UserTable from "../components/table/UserTable";
 
 type UserProps = {
@@ -6,7 +6,8 @@ type UserProps = {
 };
 
 const Users = ({ header = "Users" }: UserProps) => {
-  useHeader(header);
+  usePageTitle(header);
+
   return <UserTable itemsPerPage={12} showPaginations={false} />;
 };
 

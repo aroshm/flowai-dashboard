@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { getUsers } from "../../api/users";
+import { useMemo } from "react";
+import useUsers from "../../hooks/useUsers";
 import {
   Cell,
   Legend,
@@ -9,47 +9,38 @@ import {
   Tooltip,
 } from "recharts";
 
-interface User {
-  id: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  image: string;
-  age: number;
-  gender: string;
-}
-
 const GenderChart = ({
   isAnimationActive,
 }: {
   isAnimationActive?: boolean;
 }) => {
-  const [users, setUsers] = useState<User[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { users, loading, error } = useUsers();
 
-  useEffect(() => {
-    getUsers()
-      .then(setUsers)
-      .finally(() => setLoading(false));
-  }, []);
-
-  const data = Object.entries(
-    users.reduce<Record<string, number>>((genderCounts, user) => {
-      genderCounts[user.gender] = (genderCounts[user.gender] ?? 0) + 1;
-      return genderCounts;
-    }, {}),
-  ).map(([gender, count]) => ({
-    name: gender,
-    value: count,
-  }));
+  const data = useMemo(() => {
+    return Object.entries(
+      users.reduce<Record<string, number>>((genderCounts, user) => {
+        genderCounts[user.gender] = (genderCounts[user.gender] ?? 0) + 1;
+        return genderCounts;
+      }, {}),
+    ).map(([gender, count]) => ({
+      name: gender,
+      value: count,
+    }));
+  }, [users]);
 
   const colors = ["#6366f1", "#14b8a6", "#f97316"];
 
   return (
     <div className="h-64">
-      {loading ? (
+      {loading && (
         <p>Loading data...</p>
-      ) : (
+      )}
+
+      {!loading && error && (
+        <p className="text-sm text-red-500">{error}</p>
+      )}
+
+      {!loading && !error && (
         <ResponsiveContainer width="100%" height="80%">
           <PieChart>
             <Pie

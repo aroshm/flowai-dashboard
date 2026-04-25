@@ -1,6 +1,6 @@
 import GenderChart from "../components/chart/GenderChart";
 import LineChartCustom from "../components/chart/LineChartCustom";
-import useHeader from "../components/table/useHeader";
+import usePageTitle from "../hooks/usePageTitle";
 import UserTable from "../components/table/UserTable";
 import KpiCard from "../components/ui/KpiCard";
 
@@ -9,7 +9,8 @@ type DashboardProps = {
 };
 
 const Dashboard = ({ header = "Dashboard" }: DashboardProps) => {
-  useHeader(header);
+  usePageTitle(header);
+
   return (
     <div className="space-y-6">
       <div className="grid md:grid-cols-3 gap-6">
@@ -22,8 +23,8 @@ const Dashboard = ({ header = "Dashboard" }: DashboardProps) => {
         <LineChartCustom />
 
         <div className="bg-white p-6 rounded-xl shadow-sm dark:bg-slate-800">
-          <h3 className="font-semibold dark:text-gray-200">Recent Activity</h3>
-          <GenderChart/>
+          <h3 className="font-semibold dark:text-gray-200">Users by Gender</h3>
+          <GenderChart />
         </div>
       </div>
 
