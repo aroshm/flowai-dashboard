@@ -1,8 +1,8 @@
-import GenderChart from "../components/chart/GenderChart";
-import LineChartCustom from "../components/chart/LineChartCustom";
 import usePageTitle from "../hooks/usePageTitle";
 import UserTable from "../components/table/UserTable";
 import KpiCardSection from "../components/ui/KpiCardSection";
+import GenderChart from "../components/ui/GenderChart";
+import BloodGroupChart from "../components/ui/BloodGroupChart";
 
 type DashboardProps = {
   header?: string;
@@ -18,11 +18,14 @@ const Dashboard = ({ header = "Dashboard" }: DashboardProps) => {
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">
-        <LineChartCustom />
-
         <div className="bg-white p-6 rounded-xl shadow-sm dark:bg-slate-800">
-          <h3 className="font-semibold dark:text-gray-200">Users by Gender</h3>
-          <GenderChart />
+          <h3 className="font-semibold dark:text-gray-200 mb-2.5">
+            Gender & Blood Group
+          </h3>
+          <div className="grid md:grid-cols-2 gap-2.5">
+            <GenderChart />
+            <BloodGroupChart />
+          </div>
         </div>
       </div>
 
