@@ -1,19 +1,12 @@
 import { useMemo } from "react";
 import useUsers from "../../hooks/useUsers";
+import { getCountChartData } from "../../utils/chartData";
 import GenericPieChart from "../chart/GenericPieChart";
 
 const GenderChart = () => {
   const { users, loading, error } = useUsers();
   const data = useMemo(() => {
-    return Object.entries(
-      users.reduce<Record<string, number>>((genderCounts, user) => {
-        genderCounts[user.gender] = (genderCounts[user.gender] ?? 0) + 1;
-        return genderCounts;
-      }, {}),
-    ).map(([gender, count]) => ({
-      name: gender,
-      value: count,
-    }));
+    return getCountChartData(users, (user) => user.gender);
   }, [users]);
 
   return (

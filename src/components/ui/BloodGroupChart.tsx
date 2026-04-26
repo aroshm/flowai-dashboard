@@ -1,20 +1,12 @@
 import { useMemo } from "react";
 import useUsers from "../../hooks/useUsers";
+import { getCountChartData } from "../../utils/chartData";
 import GenericPieChart from "../chart/GenericPieChart";
 
 const BloodGroupChart = () => {
   const { users, loading, error } = useUsers();
   const data = useMemo(() => {
-    return Object.entries(
-      users.reduce<Record<string, number>>((bloodGroupCount, user) => {
-        bloodGroupCount[user.bloodGroup] =
-          (bloodGroupCount[user.bloodGroup] ?? 0) + 1;
-        return bloodGroupCount;
-      }, {}),
-    ).map(([bloodGroup, count]) => ({
-      name: bloodGroup,
-      value: count,
-    }));
+    return getCountChartData(users, (user) => user.bloodGroup);
   }, [users]);
 
   return (

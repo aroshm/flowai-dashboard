@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import useUsers from "../../hooks/useUsers";
+import { getCountChartData } from "../../utils/chartData";
 import GenericBarChart from "../chart/GenericBarChart";
 
 const getBrowserName = (userAgent: string) => {
@@ -15,18 +16,11 @@ const DeviceUsageBarChart = () => {
   const { users, loading, error } = useUsers();
 
   const data = useMemo(() => {
-    return Object.entries(
-      users.reduce<Record<string, number>>((browserCount, user) => {
-        const browserName = getBrowserName(user.userAgent);
-        browserCount[browserName] = (browserCount[browserName] ?? 0) + 1;
-        return browserCount;
-      }, {}),
-    )
-      .map(([browserName, count]) => ({
-        name: browserName,
-        value: count,
-      }))
-      .sort((a, b) => b.value - a.value);
+    return getCountChartData(
+      users,
+      (user) => getBrowserName(user.userAgent),
+      true,
+    );
   }, [users]);
 
   return (
