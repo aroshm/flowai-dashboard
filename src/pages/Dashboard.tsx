@@ -2,7 +2,7 @@ import GenderChart from "../components/chart/GenderChart";
 import LineChartCustom from "../components/chart/LineChartCustom";
 import usePageTitle from "../hooks/usePageTitle";
 import UserTable from "../components/table/UserTable";
-import KpiCard from "../components/ui/KpiCard";
+import KpiCardSection from "../components/ui/KpiCardSection";
 
 type DashboardProps = {
   header?: string;
@@ -13,10 +13,8 @@ const Dashboard = ({ header = "Dashboard" }: DashboardProps) => {
 
   return (
     <div className="space-y-6">
-      <div className="grid md:grid-cols-3 gap-6">
-        <KpiCard title="Total Revenue" value="$24,500" change="+12%" />
-        <KpiCard title="Active Users" value="1,240" change="+8%" />
-        <KpiCard title="Conversion Rate" value="3.2%" change="+2%" />
+      <div className="grid md:grid-cols-4 gap-6">
+        <KpiCardSection />
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">

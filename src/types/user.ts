@@ -8,4 +8,9 @@ export type User = {
   image: string;
   age: number;
   gender: Gender;
+  bank: { currency: string };
+  currency: string;
+  department: string;
+  role: string;
+  company: { department: string };
 };
