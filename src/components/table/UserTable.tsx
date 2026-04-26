@@ -11,14 +11,18 @@ const UserTable = ({ itemsPerPage, showPaginations }: UserTableProps) => {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
 
-  const filteredUsers = useMemo(() => users.filter((user) => {
-    const searchText = search.toLocaleLowerCase();
+  const filteredUsers = useMemo(
+    () =>
+      users.filter((user) => {
+        const searchText = search.toLocaleLowerCase();
 
-    return (
-      user.firstName.toLocaleLowerCase().includes(searchText) ||
-      user.lastName.toLocaleLowerCase().includes(searchText)
-    );
-  }), [search, users]);
+        return (
+          user.firstName.toLocaleLowerCase().includes(searchText) ||
+          user.lastName.toLocaleLowerCase().includes(searchText)
+        );
+      }),
+    [search, users],
+  );
 
   const paginatedUsers = filteredUsers.slice(
     (page - 1) * itemsPerPage,
@@ -26,11 +30,10 @@ const UserTable = ({ itemsPerPage, showPaginations }: UserTableProps) => {
   );
 
   const displayUsers = showPaginations ? paginatedUsers : filteredUsers;
-  const totalPages = Math.max(1, Math.ceil(filteredUsers.length / itemsPerPage));
-
-  const getStatus = (id: number) => {
-    return id % 2 === 0 ? "Active" : "Inactive";
-  };
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredUsers.length / itemsPerPage),
+  );
 
   return (
     <div className="space-y-6">
@@ -49,17 +52,21 @@ const UserTable = ({ itemsPerPage, showPaginations }: UserTableProps) => {
               <th className="p-4">User</th>
               <th>Email</th>
               <th>Age</th>
-              <th>Status</th>
+              <th>Role</th>
             </tr>
           </thead>
           <tbody>
             {loading ? (
               <tr className="dark:bg-slate-800">
-                <td className="p-6" colSpan={4}>Loading users...</td>
+                <td className="p-6" colSpan={4}>
+                  Loading users...
+                </td>
               </tr>
             ) : error ? (
               <tr className="dark:bg-slate-800">
-                <td className="p-6 text-red-500" colSpan={4}>{error}</td>
+                <td className="p-6 text-red-500" colSpan={4}>
+                  {error}
+                </td>
               </tr>
             ) : displayUsers.length === 0 ? (
               <tr className="dark:bg-slate-800">
@@ -87,16 +94,8 @@ const UserTable = ({ itemsPerPage, showPaginations }: UserTableProps) => {
                   <td className="text-gray-500 dark:text-gray-400">
                     {user.age}
                   </td>
-                  <td>
-                    <span
-                      className={`px-2 py-1 text-xs rounded-full ${
-                        getStatus(user.id) === "Active"
-                          ? "bg-green-100 text-green-600"
-                          : "bg-red-100 text-red-600"
-                      }`}
-                    >
-                      {getStatus(user.id)}
-                    </span>
+                  <td className="text-gray-500 dark:text-gray-400">
+                    {user.role}
                   </td>
                 </tr>
               ))
