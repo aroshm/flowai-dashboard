@@ -14,4 +14,5 @@ export type User = {
   role: string;
   company: { department: string };
   bloodGroup: string;
+  userAgent: string;
 };

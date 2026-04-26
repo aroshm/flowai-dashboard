@@ -3,6 +3,7 @@ import UserTable from "../components/table/UserTable";
 import KpiCardSection from "../components/ui/KpiCardSection";
 import GenderChart from "../components/ui/GenderChart";
 import BloodGroupChart from "../components/ui/BloodGroupChart";
+import DeviceUsageBarChart from "../components/ui/DeviceUsageBarChart";
 
 type DashboardProps = {
   header?: string;
@@ -26,6 +27,12 @@ const Dashboard = ({ header = "Dashboard" }: DashboardProps) => {
             <GenderChart />
             <BloodGroupChart />
           </div>
+        </div>
+        <div className="bg-white p-6 rounded-xl shadow-sm dark:bg-slate-800">
+          <h3 className="font-semibold dark:text-gray-200 mb-2.5">
+            Device Usage
+          </h3>
+          <DeviceUsageBarChart />
         </div>
       </div>
 

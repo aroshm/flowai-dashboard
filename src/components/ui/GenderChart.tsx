@@ -16,7 +16,6 @@ const GenderChart = () => {
     }));
   }, [users]);
 
-  console.log(data);
   return (
     <>
       {loading && <p>Loading data...</p>}
