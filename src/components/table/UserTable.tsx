@@ -4,9 +4,14 @@ import useUsers from "../../hooks/useUsers";
 interface UserTableProps {
   itemsPerPage: number;
   showPaginations: boolean;
+  showSearch: boolean;
 }
 
-const UserTable = ({ itemsPerPage, showPaginations }: UserTableProps) => {
+const UserTable = ({
+  itemsPerPage,
+  showPaginations,
+  showSearch,
+}: UserTableProps) => {
   const { users, loading, error } = useUsers();
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
@@ -37,13 +42,15 @@ const UserTable = ({ itemsPerPage, showPaginations }: UserTableProps) => {
 
   return (
     <div className="space-y-6">
-      <input
-        type="text"
-        placeholder="Search users..."
-        className="border px-4 py-2 rounded-lg w-full max-w-sm dark:border-gray-500 dark:text-gray-100"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+      {showSearch && (
+        <input
+          type="text"
+          placeholder="Search users..."
+          className="border px-4 py-2 rounded-lg w-full max-w-sm dark:border-gray-500 dark:text-gray-100"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      )}
 
       <div className="bg-white rounded-xl shadow-sm overflow-hidden">
         <table className="w-full text-left dark:border dark:border-gray-500">
@@ -58,7 +65,7 @@ const UserTable = ({ itemsPerPage, showPaginations }: UserTableProps) => {
           <tbody>
             {loading ? (
               <tr className="dark:bg-slate-800">
-                <td className="p-6" colSpan={4}>
+                <td className="p-6 dark:text-white" colSpan={4}>
                   Loading users...
                 </td>
               </tr>

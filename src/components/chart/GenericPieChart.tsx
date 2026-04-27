@@ -43,8 +43,8 @@ const GenericPieChart = <T extends PieData>({
   innerRadius = 0,
 }: CommonPieProps<T>) => {
   return (
-    <div style={{ width: "100%", height }}>
-      <ResponsiveContainer>
+    <div className="min-w-0" style={{ width: "100%", height }}>
+      <ResponsiveContainer minWidth={0}>
         <PieChart>
           <Pie
             data={data}

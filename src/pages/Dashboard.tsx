@@ -1,5 +1,5 @@
 import usePageTitle from "../hooks/usePageTitle";
-// import UserTable from "../components/table/UserTable";
+import UserTable from "../components/table/UserTable";
 import KpiCardSection from "../components/ui/KpiCardSection";
 import GenderChart from "../components/ui/GenderChart";
 import BloodGroupChart from "../components/ui/BloodGroupChart";
@@ -55,16 +55,9 @@ const Dashboard = ({ header = "Dashboard" }: DashboardProps) => {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-1">
-        <h3 className="font-semibold dark:text-gray-200 mb-2.5">
-          Geographic Map
-        </h3>
-        <div className="h-96"></div>
+      <div className="py-5">
+        <UserTable itemsPerPage={8} showPaginations={true} showSearch={false} />
       </div>
-
-      {/* <div className="py-5">
-        <UserTable itemsPerPage={8} showPaginations={true} />
-      </div> */}
     </div>
   );
 };

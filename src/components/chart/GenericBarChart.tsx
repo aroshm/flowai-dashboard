@@ -50,43 +50,45 @@ const GenericBarChart = <T extends Record<string, string | number>>({
   const isVerticalLayout = layout === "vertical";
 
   return (
-    <ResponsiveContainer width="100%" height={height}>
-      <BarChart
-        data={data}
-        layout={layout}
-        margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis
-          dataKey={xAxisKey as string}
-          type={isVerticalLayout ? "number" : "category"}
-        />
-        <YAxis
-          dataKey={yAxisKey as string}
-          type={isVerticalLayout ? "category" : "number"}
-          width={isVerticalLayout ? yAxisWidth : undefined}
-          tickLine={false}
-        />
-        <Tooltip />
-        <Legend />
-        {dataKey.map((bar, index) => (
-          <Bar
-            key={bar.key as string}
-            dataKey={bar.key as string}
-            stroke={bar.color}
-            fill={colors[index % colors.length]}
-          >
-            {data.map((_, dataIndex) => (
-              <Cell
-                key={`cell-${String(bar.key)}-${dataIndex}`}
-                fill={colors[dataIndex % colors.length]}
-              />
-            ))}
-          </Bar>
-        ))}
-        <RechartsDevtools />
-      </BarChart>
-    </ResponsiveContainer>
+    <div className="min-w-0" style={{ width: "100%", height }}>
+      <ResponsiveContainer width="100%" height="100%" minWidth={0}>
+        <BarChart
+          data={data}
+          layout={layout}
+          margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis
+            dataKey={xAxisKey as string}
+            type={isVerticalLayout ? "number" : "category"}
+          />
+          <YAxis
+            dataKey={yAxisKey as string}
+            type={isVerticalLayout ? "category" : "number"}
+            width={isVerticalLayout ? yAxisWidth : undefined}
+            tickLine={false}
+          />
+          <Tooltip />
+          <Legend />
+          {dataKey.map((bar, index) => (
+            <Bar
+              key={bar.key as string}
+              dataKey={bar.key as string}
+              stroke={bar.color}
+              fill={colors[index % colors.length]}
+            >
+              {data.map((_, dataIndex) => (
+                <Cell
+                  key={`cell-${String(bar.key)}-${dataIndex}`}
+                  fill={colors[dataIndex % colors.length]}
+                />
+              ))}
+            </Bar>
+          ))}
+          <RechartsDevtools />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
   );
 };
 

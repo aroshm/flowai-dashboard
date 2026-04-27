@@ -25,27 +25,29 @@ const GenericLineChart = <T extends Record<string, number>>({
   height = 300,
 }: GenericChartProps<T>) => {
   return (
-    <ResponsiveContainer width="100%" height={height}>
-      <LineChart
-        data={data}
-        margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey={xAxisKey as string} />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        {lineKeys.map((line) => (
-          <Line
-            key={line.key as string}
-            type="monotone"
-            dataKey={line.key as string}
-            stroke={line.color}
-            activeDot={{ r: 8 }}
-          />
-        ))}
-      </LineChart>
-    </ResponsiveContainer>
+    <div className="min-w-0" style={{ width: "100%", height }}>
+      <ResponsiveContainer width="100%" height="100%" minWidth={0}>
+        <LineChart
+          data={data}
+          margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey={xAxisKey as string} />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          {lineKeys.map((line) => (
+            <Line
+              key={line.key as string}
+              type="monotone"
+              dataKey={line.key as string}
+              stroke={line.color}
+              activeDot={{ r: 8 }}
+            />
+          ))}
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
   );
 };
 

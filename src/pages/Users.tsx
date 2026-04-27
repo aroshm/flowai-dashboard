@@ -8,7 +8,9 @@ type UserProps = {
 const Users = ({ header = "Users" }: UserProps) => {
   usePageTitle(header);
 
-  return <UserTable itemsPerPage={12} showPaginations={false} />;
+  return (
+    <UserTable itemsPerPage={12} showPaginations={false} showSearch={true} />
+  );
 };
 
 export default Users;

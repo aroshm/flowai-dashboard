@@ -11,7 +11,7 @@ const DepartmentChart = () => {
   }, [users]);
   return (
     <>
-      {loading && <p>Loading data...</p>}
+      {loading && <p className="dark:text-white">Loading data...</p>}
 
       {!loading && error && <p className="text-sm text-red-500">{error}</p>}
 
