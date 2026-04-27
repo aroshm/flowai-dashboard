@@ -16,7 +16,7 @@ const Header = ({ darkMode, setDarkMode, title }: HeaderProps) => {
         onClick={setDarkMode}
         type="button"
       >
-        {darkMode ? <FaRegSun /> : <FaRegMoon />}
+        {darkMode ? <FaRegSun /> : <FaRegMoon />} ss
       </button>
     </header>
   );
