@@ -1,62 +1,34 @@
-import usePageTitle from "../hooks/usePageTitle";
+import GenderChart from "../components/chart/GenderChart";
+import LineChartCustom from "../components/chart/LineChartCustom";
+import useHeader from "../components/table/useHeader";
 import UserTable from "../components/table/UserTable";
-import KpiCardSection from "../components/ui/KpiCardSection";
-import GenderChart from "../components/ui/GenderChart";
-import BloodGroupChart from "../components/ui/BloodGroupChart";
-import DeviceUsageBarChart from "../components/ui/DeviceUsageBarChart";
-import DepartmentChart from "../components/ui/DepartmentChart";
-import GenericMap from "../components/map/GenericMap";
+import KpiCard from "../components/ui/KpiCard";
 
 type DashboardProps = {
   header?: string;
 };
 
 const Dashboard = ({ header = "Dashboard" }: DashboardProps) => {
-  usePageTitle(header);
-
+  useHeader(header);
   return (
     <div className="space-y-6">
-      <div className="grid md:grid-cols-4 gap-6">
-        <KpiCardSection />
+      <div className="grid md:grid-cols-3 gap-6">
+        <KpiCard title="Total Revenue" value="$24,500" change="+12%" />
+        <KpiCard title="Active Users" value="1,240" change="+8%" />
+        <KpiCard title="Conversion Rate" value="3.2%" change="+2%" />
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">
-        <div className="bg-white p-6 rounded-xl shadow-sm dark:bg-slate-800">
-          <h3 className="font-semibold dark:text-gray-200 mb-2.5">
-            Gender & Blood Group
-          </h3>
-          <div className="grid md:grid-cols-2 gap-2.5">
-            <GenderChart />
-            <BloodGroupChart />
-          </div>
-        </div>
-        <div className="bg-white p-6 rounded-xl shadow-sm dark:bg-slate-800">
-          <h3 className="font-semibold dark:text-gray-200 mb-2.5">
-            Device Usage
-          </h3>
-          <DeviceUsageBarChart />
-        </div>
-      </div>
+        <LineChartCustom />
 
-      <div className="grid md:grid-cols-2 gap-6">
         <div className="bg-white p-6 rounded-xl shadow-sm dark:bg-slate-800">
-          <h3 className="font-semibold dark:text-gray-200 mb-2.5">
-            Department Distribution
-          </h3>
-          <div className="grid md:grid-cols-1">
-            <DepartmentChart />
-          </div>
-        </div>
-        <div className="flex flex-col bg-white p-6 rounded-xl shadow-sm dark:bg-slate-800">
-          <h3 className="font-semibold dark:text-gray-200 mb-2.5">
-            Geographic Map
-          </h3>
-          <GenericMap />
+          <h3 className="font-semibold dark:text-gray-200">Recent Activity</h3>
+          <GenderChart/>
         </div>
       </div>
 
       <div className="py-5">
-        <UserTable itemsPerPage={8} showPaginations={true} showSearch={false} />
+        <UserTable itemsPerPage={8} showPaginations={true} />
       </div>
     </div>
   );
