@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 const useTheme = (): [boolean, () => void] => {
   const [darkMode, setDarkMode] = useState<boolean>(() => {
-    return localStorage.getItem("theme") === "dark";
+    return localStorage.getItem("theme") !== "light";
   });
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const useTheme = (): [boolean, () => void] => {
       localStorage.setItem("theme", "dark");
     } else {
       root.classList.remove("dark");
-      localStorage.setItem("theme", "");
+      localStorage.setItem("theme", "light");
     }
   }, [darkMode]);
 
