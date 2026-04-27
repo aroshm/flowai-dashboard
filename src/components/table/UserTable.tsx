@@ -119,7 +119,7 @@ const UserTable = ({
         <div className="flex gap-2 mt-4">
           <button
             onClick={() => setPage((p) => Math.max(p - 1, 1))}
-            className="px-3 py-1 border rounded dark:border-gray-500 dark:text-gray-100 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-3 py-1 border rounded border-indigo-600  text-indigo-600 hover:bg-slate-200 transition dark:border-gray-500 dark:text-gray-100 hover:dark:bg-slate-700 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={page === 1}
           >
             Prev
@@ -127,7 +127,7 @@ const UserTable = ({
 
           <button
             onClick={() => setPage((p) => p + 1)}
-            className="px-3 py-1 border rounded dark:border-gray-500 dark:text-gray-100 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-3 py-1 border rounded border-indigo-600 text-indigo-600 hover:bg-slate-200 transition dark:border-gray-500 dark:text-gray-100 hover:dark:bg-slate-700 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={page === totalPages}
           >
             Next
