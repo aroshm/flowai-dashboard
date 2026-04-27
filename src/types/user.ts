@@ -15,4 +15,11 @@ export type User = {
   company: { department: string };
   bloodGroup: string;
   userAgent: string;
+  address: {
+    city: string;
+    coordinates: {
+      lat: number;
+      lng: number;
+    };
+  };
 };
