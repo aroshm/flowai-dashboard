@@ -59,7 +59,8 @@ const UserTable = ({
               <th className="p-4">User</th>
               <th>Email</th>
               <th>Age</th>
-              <th>Role</th>
+              <th>Location</th>
+              <th>Profession</th>
             </tr>
           </thead>
           <tbody>
@@ -102,7 +103,10 @@ const UserTable = ({
                     {user.age}
                   </td>
                   <td className="text-gray-500 dark:text-gray-400">
-                    {user.role}
+                    {user.address.city}
+                  </td>
+                  <td className="text-gray-500 dark:text-gray-400">
+                    {user.company.title}
                   </td>
                 </tr>
               ))

@@ -12,7 +12,7 @@ export type User = {
   currency: string;
   department: string;
   role: string;
-  company: { department: string };
+  company: { department: string; title: string };
   bloodGroup: string;
   userAgent: string;
   address: {

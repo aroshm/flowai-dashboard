@@ -8,7 +8,7 @@ type HeaderProps = {
 
 const Header = ({ darkMode, setDarkMode, title }: HeaderProps) => {
   return (
-    <header className="flex justify-between bg-white border-b px-6 py-4 dark:bg-gray-800 dark:text-gray-100">
+    <header className="flex justify-between bg-white border-b border-b-slate-400 px-6 py-4 dark:bg-gray-800 dark:text-gray-100">
       <h2 className="text-lg font-semibold">{title}</h2>
       <button
         aria-label="Toggle theme"
